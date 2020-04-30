@@ -1,0 +1,41 @@
+
+type Account {
+	number: ID!
+	owner: String!
+	balance: Float!
+	active: Boolean!
+}
+
+# According to https://github.com/mikenoethiger/bank-server#response
+type Response {
+	statusCode: Int!
+	data: [String!]!
+}
+
+type Query {
+	account(number: ID!): Account
+	accounts: [String!]!
+}
+
+
+type Mutation {
+	# According to https://github.com/mikenoethiger/bank-server#create-account-3
+	createAccount(owner: String!): Response!
+
+	# According to https://github.com/mikenoethiger/bank-server#deposit-6
+	deposit(accountNumber: ID!, amount: Float!): Response!
+
+	# According to https://github.com/mikenoethiger/bank-server#withdraw-7
+	withdraw(accountNumber: ID!, amount: Float!): Response!
+
+	# According to https://github.com/mikenoethiger/bank-server#transfer-5
+	transfer(accountNumberSender: ID!, accountNumberReceiver: ID!, amount: Float!): Response!
+
+	# According to https://github.com/mikenoethiger/bank-server#close-account-4
+	closeAccount(accountNumber: ID!): Response!
+}
+
+schema {
+	query: Query
+	mutation: Mutation
+}
