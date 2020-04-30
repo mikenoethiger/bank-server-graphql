@@ -13,3 +13,13 @@ Or with gradle:
 ```bash
 $ gradle bootRun
 ```
+
+> By default the server runs on port `5002`, this can be changed in the `src/main/resources/application.properties` file.
+
+# Endpoints
+
+Some useful endpoints are:
+
+* GraphiQL Client: `localhost:5002/graphiql`
+* Altair Client: `localhost:5002/altair`
+* Graph representation of the API: `localhost:5002/voyager`
