@@ -1,4 +1,4 @@
-[protocol](https://github.com/mikenoethiger/bank-server-socket#protocol) | [bank-client](https://github.com/mikenoethiger/bank-client)
+[protocol](https://github.com/mikenoethiger/bank-server-socket#protocol) | [bank-client](https://github.com/mikenoethiger/bank-client) | [bank-server-socket](https://github.com/mikenoethiger/bank-server-socket) | [bank-server-graphql](https://github.com/mikenoethiger/bank-server-graphql) | [bank-server-rabbitmq](https://github.com/mikenoethiger/bank-server-rabbitmq)
 
 # About
 
@@ -13,3 +13,13 @@ Or with gradle:
 ```bash
 $ gradle bootRun
 ```
+
+> By default the server runs on port `5002`, this can be changed in the `src/main/resources/application.properties` file.
+
+# Endpoints
+
+Some useful endpoints are:
+
+* GraphiQL Client: `localhost:5002/graphiql`
+* Altair Client: `localhost:5002/altair`
+* Graph representation of the API: `localhost:5002/voyager`
