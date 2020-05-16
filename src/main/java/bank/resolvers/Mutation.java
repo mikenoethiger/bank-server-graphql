@@ -27,6 +27,7 @@ public class Mutation implements GraphQLMutationResolver {
 	private static final Response ERROR_INACTIVE_ACCOUNT = new Response(4, toCollection("Inactive account."));
 	private static final Response ERROR_ACCOUNT_OVERDRAW = new Response(5, toCollection("Account overdraw."));
 	private static final Response ERROR_ILLEGAL_ARGUMENT = new Response(6, toCollection("Illegal argument."));
+	// XXX die beiden folgenden werden nicht verwendet.
 	private static final Response ERROR_BAD_REQUEST = new Response(7, toCollection("Bad request."));
 	private static final Response ERROR_INTERNAL_ERROR = new Response(8, toCollection("Internal error."));
 
@@ -107,6 +108,8 @@ public class Mutation implements GraphQLMutationResolver {
 
 	private static Collection<String> toCollection(String... str) {
 		return new ArrayList<>(Arrays.asList(str));
+		// XXX ist das new ArrayList<> rund um Arrays.asList nötig?
+		//     Arrays.asList ist ja bereits eine Liste.
 	}
 
 	private static class Response {

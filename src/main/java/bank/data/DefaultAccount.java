@@ -13,12 +13,13 @@ public class DefaultAccount implements Account {
     private static final Object LOCK = new Object();
     private static long next_account_number = 1000_0000_0000_0000_0L;
 
+    // XXX number und owner würde ich final deklarieren.
     private String number;
     private String owner;
     private double balance;
     private boolean active = true;
 
-    private Date lastModified;
+    private Date lastModified; // XXX ich würde hier in Zukunft LocalDate verweneden.
 
     public DefaultAccount() {}
 

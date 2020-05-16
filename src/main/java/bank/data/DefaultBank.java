@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 @Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+// XXX ich frage mich gerade ob das nicht der default ist, also Singleton.
 public class DefaultBank implements Bank {
 
     private final Map<String, DefaultAccount> accounts = new HashMap<>();
