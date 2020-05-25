@@ -5,6 +5,7 @@ import bank.InactiveException;
 import bank.OverdrawException;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class DefaultAccount implements Account {
@@ -13,15 +14,12 @@ public class DefaultAccount implements Account {
     private static final Object LOCK = new Object();
     private static long next_account_number = 1000_0000_0000_0000_0L;
 
-    // XXX number und owner würde ich final deklarieren.
-    private String number;
-    private String owner;
+    private final String number;
+    private final String owner;
     private double balance;
     private boolean active = true;
 
-    private Date lastModified; // XXX ich würde hier in Zukunft LocalDate verweneden.
-
-    public DefaultAccount() {}
+    private LocalDate lastModified;
 
     public DefaultAccount(String owner) {
         this.owner = owner;
@@ -29,7 +27,7 @@ public class DefaultAccount implements Account {
             this.number = IBAN_PREFIX + next_account_number++;
         }
         this.balance = 0;
-        lastModified = new Date();
+        lastModified = LocalDate.now();
     }
 
     @Override
@@ -57,7 +55,7 @@ public class DefaultAccount implements Account {
         if (!isActive()) throw new InactiveException();
         if (amount < 0) throw new IllegalArgumentException("negative amount not allowed");
         balance += amount;
-        lastModified = new Date();
+        lastModified = LocalDate.now();
     }
 
     @Override
@@ -66,17 +64,17 @@ public class DefaultAccount implements Account {
         if (amount > balance) throw new OverdrawException();
         if (!isActive()) throw new InactiveException();
         balance -= amount;
-        lastModified = new Date();
+        lastModified = LocalDate.now();
     }
 
     public void setBalance(double balance) {
         this.balance = balance;
-        lastModified = new Date();
+        lastModified = LocalDate.now();
     }
 
     void makeInactive() {
         active = false;
-        lastModified = new Date();
+        lastModified = LocalDate.now();
     }
 
     @Override
